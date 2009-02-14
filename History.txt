@@ -1,4 +1,7 @@
-== 0.0.1 2009-02-13
+== 0.0.1 2009-02-14
 
-* 1 major enhancement:
-  * Initial release
+* Initial release:
+  * Hashes of local, global, etc.
+  * Enumerable for locals
+  * [] syntax for getting/setting variables
+  * Sanitize identifier names
