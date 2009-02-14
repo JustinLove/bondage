@@ -7,7 +7,7 @@ module Bondage
   def self.lister(name, kind)
     define_method(name) do
       eval(kind.to_s).inject({}) {|hash, var|
-        hash[var.to_sym] = eval(var)
+        hash[var.to_sym] = eval(var.to_s)
         hash
       }
     end
