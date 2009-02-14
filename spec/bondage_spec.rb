@@ -1,15 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-describe Bondage do
-  before do
-    x = 1
-    y = 2
-    $a = 3
-    $b = 4
-    @@blarg = :bleep
-    @object = binding.extend(Bondage)
-  end
-  
+describe "well behaved Bondage", :shared => true do
   it "extends" do
     @object.should be_kind_of(Bondage)
   end
@@ -64,4 +55,34 @@ describe Bondage do
     @object[:u] = a
     @object[:u].object_id.should == a.object_id
   end
+end
+
+describe "extended" do
+  before do
+    x = 1
+    y = 2
+    $a = 3
+    $b = 4
+    @object = binding.extend(Bondage)
+  end
+
+  it_should_behave_like "well behaved Bondage"
+end
+
+describe "monkey patched" do
+  before :all do
+    class Binding
+      include Bondage
+    end
+  end
+  
+  before do
+    x = 1
+    y = 2
+    $a = 3
+    $b = 4
+    @object = binding
+  end
+
+  it_should_behave_like "well behaved Bondage"
 end
