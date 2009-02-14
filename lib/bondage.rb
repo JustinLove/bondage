@@ -4,6 +4,8 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Bondage
   VERSION = '0.0.1'
   
+  include Enumerable
+  
   def self.lister(name, kind)
     define_method(name) do
       eval(kind.to_s).inject({}) {|hash, var|

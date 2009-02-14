@@ -43,4 +43,9 @@ describe Bondage do
     @object.each {|var, value| seen << var}
     seen.should == [:x, :y]
   end
+  
+  it "can enumerate" do
+    @object.find {|var, value| value == 1}.should == [:x, 1]
+  end
+  
 end
