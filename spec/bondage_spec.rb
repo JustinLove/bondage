@@ -69,6 +69,10 @@ describe "well behaved Bondage", :shared => true do
   it "avoids identifier injection" do
     @object[:"raise 'gotcha'; x"].should == nil
   end
+
+  it "avoids identifier injection on assignment" do
+    @object[:"raise 'gotcha'; v"] = 6
+  end
 end
 
 describe "extended" do

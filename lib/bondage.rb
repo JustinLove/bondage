@@ -26,19 +26,23 @@ module Bondage
   
   def lookup(name)
     begin
-      eval(name.to_s.gsub(/[^$@\w]/, '_'));
+      eval(sanitize(name));
     rescue NameError
       return nil
     end
+  end
+  
+  def sanitize(name)
+    name.to_s.gsub(/[^$@\w]/, '_')
   end
 
   alias_method :[], :lookup
 
   def []=(symbol, value)
     if defined?(ObjectSpace)
-      eval("#{symbol} = ObjectSpace._id2ref(#{value.object_id})")
+      eval("#{sanitize(symbol)} = ObjectSpace._id2ref(#{value.object_id})")
     else
-      eval("#{symbol} = #{value}")
+      eval("#{sanitize(symbol)} = #{value}")
     end
   end
 end
