@@ -4,23 +4,17 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Bondage
   VERSION = '0.0.1'
   
-  class << self
-    private
-    def lister(name, kind)
-      define_method(name) do
-        eval(kind.to_s).inject({}) {|hash, var|
-          hash[var.to_sym] = lookup(var)
-          hash
-        }
-      end
-    end
-  end
-
-  lister :locals, :local_variables
-  lister :globals, :global_variables
-  lister :instvars, :instance_variables
-  lister :classvars, :class_variables
-  lister :consts, :constants
+  # Hash of local variables
+  def locals; list_all :local_variables; end
+  # Hash of global variables (with '$')
+  def globals; list_all :global_variables; end
+  # Hash of instance variables (with '@')
+  def instvars; list_all :instance_variables; end
+  # Hash of class variables (with '@@')
+  # Only valid in class scope.
+  def classvars; list_all :class_variables; end
+  # Hash of constants
+  def consts; list_all :constants; end
   
   # Iterator over locals; base for Enumerable methods.
   def each(&proc)
@@ -51,6 +45,13 @@ module Bondage
   end
 
   private
+  def list_all(kind)
+    eval(kind.to_s).inject({}) {|hash, var|
+      hash[var.to_sym] = lookup(var)
+      hash
+    }
+  end
+  
   def sanitize(name)
     name.to_s.gsub(/[^$@\w]/, '_')
   end
