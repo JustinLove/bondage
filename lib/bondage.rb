@@ -4,12 +4,15 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Bondage
   VERSION = '0.0.1'
   
-  def self.lister(name, kind)
-    define_method(name) do
-      eval(kind.to_s).inject({}) {|hash, var|
-        hash[var.to_sym] = lookup(var)
-        hash
-      }
+  class << self
+    private
+    def lister(name, kind)
+      define_method(name) do
+        eval(kind.to_s).inject({}) {|hash, var|
+          hash[var.to_sym] = lookup(var)
+          hash
+        }
+      end
     end
   end
 
@@ -32,10 +35,6 @@ module Bondage
     end
   end
   
-  def sanitize(name)
-    name.to_s.gsub(/[^$@\w]/, '_')
-  end
-
   alias_method :[], :lookup
 
   def []=(symbol, value)
@@ -44,5 +43,10 @@ module Bondage
     else
       eval("#{sanitize(symbol)} = #{value}")
     end
+  end
+
+  private
+  def sanitize(name)
+    name.to_s.gsub(/[^$@\w]/, '_')
   end
 end
