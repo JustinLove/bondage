@@ -39,14 +39,14 @@ module Bondage
   
   alias_method :[], :lookup
 
-  # Assign the symbol within the binding
+  # Assign the variable within the binding
   # * If your implementation supports ObjectSpace, this is relatively safe
   # * If not, the right-hand-side gets it's string value eval'ed
-  def []=(symbol, value)
+  def []=(name, value)
     if defined?(ObjectSpace)
-      eval("#{sanitize(symbol)} = ObjectSpace._id2ref(#{value.object_id})")
+      eval("#{sanitize(name)} = ObjectSpace._id2ref(#{value.object_id})")
     else
-      eval("#{sanitize(symbol)} = #{value}")
+      eval("#{sanitize(name)} = #{value}")
     end
   end
 
