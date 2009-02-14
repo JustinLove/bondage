@@ -23,4 +23,12 @@ module Bondage
   def each(&proc)
     locals.each(&proc)
   end
+  
+  def [](symbol)
+    begin
+      eval(symbol.to_s)
+    rescue NameError
+      return nil
+    end
+  end
 end

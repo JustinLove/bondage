@@ -47,5 +47,10 @@ describe Bondage do
   it "can enumerate" do
     @object.find {|var, value| value == 1}.should == [:x, 1]
   end
-  
+
+  it "looks up names" do
+    @object[:x].should == 1
+    @object[$a].should == $a
+    @object[:z].should be_nil
+  end
 end
