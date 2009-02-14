@@ -7,7 +7,7 @@ module Bondage
   def self.lister(name, kind)
     define_method(name) do
       eval(kind.to_s).inject({}) {|hash, var|
-        hash[var.to_sym] = eval(var.to_s)
+        hash[var.to_sym] = lookup(var)
         hash
       }
     end
@@ -24,14 +24,16 @@ module Bondage
   end
   include Enumerable
   
-  def [](symbol)
+  def lookup(name)
     begin
-      eval(symbol.to_s)
+      eval(name.to_s.gsub(/[^$@\w]/, '_'));
     rescue NameError
       return nil
     end
   end
-  
+
+  alias_method :[], :lookup
+
   def []=(symbol, value)
     if defined?(ObjectSpace)
       eval("#{symbol} = ObjectSpace._id2ref(#{value.object_id})")
