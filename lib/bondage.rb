@@ -4,18 +4,15 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Bondage
   VERSION = '0.0.1'
   
-  def locals
-    eval("local_variables").inject({}) {|hash, var|
-      hash[var.to_sym] = eval(var)
-      hash
-    }
+  def self.lister(name, kind)
+    define_method(name) do
+      eval(kind.to_s).inject({}) {|hash, var|
+        hash[var.to_sym] = eval(var)
+        hash
+      }
+    end
   end
-  
-  def globals
-    eval("global_variables").inject({}) {|hash, var|
-      hash[var.to_sym] = eval(var)
-      hash
-    }
-  end
-  
+
+  lister :locals, :local_variables
+  lister :globals, :global_variables
 end
