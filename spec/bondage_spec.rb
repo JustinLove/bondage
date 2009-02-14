@@ -38,4 +38,9 @@ describe Bondage do
     b.classvars[:@@blarg].should == :bleep
   end
   
+  it "supports each on locals" do
+    seen = []
+    @object.each {|var, value| seen << var}
+    seen.should == [:x, :y]
+  end
 end
