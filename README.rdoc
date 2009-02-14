@@ -10,7 +10,7 @@ class Binding stinks.  module Bondage stinks less.
 
 * Allows access to binding variables without use of eval.
 * Provides enumerators for visible variables.
-* Warning: Uses eval internally, so don't use it with untrusted data.
+* Warning: Uses eval internally, so don't use it with untrusted data.  An attempt is made to sanitize symbol names.  However, if your implementation doesn't support ObjectSpace, the second argument to []= is still evaled directly.
 
 == SYNOPSIS:
 
