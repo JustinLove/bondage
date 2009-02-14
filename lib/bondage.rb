@@ -10,4 +10,12 @@ module Bondage
       hash
     }
   end
+  
+  def globals
+    eval("global_variables").inject({}) {|hash, var|
+      hash[var.to_sym] = eval(var)
+      hash
+    }
+  end
+  
 end

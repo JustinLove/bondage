@@ -19,4 +19,10 @@ describe Bondage do
     @object.locals[:z].should be_nil
   end
   
+  it "look up globals" do
+    @object.globals[:$a].should == $a
+    @object.globals[:$b].should == $b
+    @object.globals[:$c].should be_nil
+  end
+  
 end
