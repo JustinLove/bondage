@@ -1,11 +1,22 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
-# Time to add your specs!
-# http://rspec.info/
-describe "Place your specs here" do
+describe Bondage do
+  before do
+    x = 1
+    y = 2
+    $a = 3
+    $b = 4
+    @object = binding.extend(Bondage)
+  end
   
-  it "find this spec in spec directory" do
-    violated "Be sure to write your specs"
+  it "extends" do
+    @object.should be_kind_of(Bondage)
+  end
+  
+  it "look up locals" do
+    @object.locals[:x].should == 1
+    @object.locals[:y].should == 2
+    @object.locals[:z].should be_nil
   end
   
 end
