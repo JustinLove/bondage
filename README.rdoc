@@ -9,15 +9,24 @@ class Binding stinks.  module Bondage stinks less.
 == FEATURES/PROBLEMS:
 
 * Allows access to binding variables without use of eval.
-* Providers enumerators for visible variables.
-* Warning: Uses eval internally, so don't use it with untrusted strings.
+* Provides enumerators for visible variables.
+* Warning: Uses eval internally, so don't use it with untrusted data.
 
 == SYNOPSIS:
 
   b = binding.extend(Bondage)
+  
+  # return variable hashes
   b.locals[:b]
   b.globals.each {|var, value| ... }
-  b[:b]
+  
+  # set and retrieve
+  b[:x] = ["one", "two", "three"]
+  b[:$LOAD_PATH]
+  b[:@pizza]
+  
+  # supports Enumerable over locals
+  b.find {|var, value| ... }
   
   # Or if you're feeling really kinky
   class Binding
@@ -30,13 +39,13 @@ Tested under Ruby 1.8.7.
 
 == INSTALL:
 
-sudo gem install
+sudo gem install bondage
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Justin Love
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
