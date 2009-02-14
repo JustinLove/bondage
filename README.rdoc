@@ -2,14 +2,7 @@
 
 * http://github.com/JustinLove/bondage
 
-== DESCRIPTION:
-
-class Binding stinks, module Bondage stinks less.  Bondage provides hashes of local, global, instance, etc. variables, and provides the Enumerable interface for locals directly.  It also provides [] syntax to get/set binding variables directly.
-
-== FEATURES/PROBLEMS:
-
-* Note that hashes provided by locals & co are plain old hashes (writing to them won't affect the binding) with references to the real data (modifying the values themselves will be reflected in the binding.)
-* Warning: Uses eval internally, so don't use it with untrusted data.  An attempt is made to sanitize identifier names.  However, if your implementation doesn't support ObjectSpace, the second argument to []= is still evaled directly.
+:include:description.rdoc
 
 == SYNOPSIS:
 

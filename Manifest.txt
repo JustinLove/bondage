@@ -2,6 +2,7 @@ History.txt
 Manifest.txt
 README.rdoc
 Rakefile
+description.rdoc
 lib/bondage.rb
 script/console
 script/destroy
