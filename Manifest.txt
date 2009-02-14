@@ -1,9 +1,7 @@
 History.txt
 Manifest.txt
-PostInstall.txt
 README.rdoc
 Rakefile
-synopsis.rb
 lib/bondage.rb
 script/console
 script/destroy
@@ -11,4 +9,5 @@ script/generate
 spec/bondage_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
+synopsis.rb
 tasks/rspec.rake
