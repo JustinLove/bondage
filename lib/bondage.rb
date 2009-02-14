@@ -15,4 +15,6 @@ module Bondage
 
   lister :locals, :local_variables
   lister :globals, :global_variables
+  lister :instvars, :instance_variables
+  lister :classvars, :class_variables
 end

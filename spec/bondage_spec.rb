@@ -6,6 +6,7 @@ describe Bondage do
     y = 2
     $a = 3
     $b = 4
+    @@blarg = :bleep
     @object = binding.extend(Bondage)
   end
   
@@ -23,6 +24,18 @@ describe Bondage do
     @object.globals[:$a].should == $a
     @object.globals[:$b].should == $b
     @object.globals[:$c].should be_nil
+  end
+
+  it "look up instance" do
+    @object.instvars[:@object].should == @object
+  end
+  
+  it "look up class variables" do
+    b = class Blarg
+      @@blarg = :bleep
+      binding.extend(Bondage)
+    end
+    b.classvars[:@@blarg].should == :bleep
   end
   
 end
