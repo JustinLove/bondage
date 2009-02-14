@@ -3,6 +3,7 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+synopsis.rb
 lib/bondage.rb
 script/console
 script/destroy
