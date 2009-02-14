@@ -31,4 +31,8 @@ module Bondage
       return nil
     end
   end
+  
+  def []=(symbol, value)
+    eval("#{symbol} = #{value}")
+  end
 end

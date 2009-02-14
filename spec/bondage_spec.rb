@@ -53,4 +53,9 @@ describe Bondage do
     @object[$a].should == $a
     @object[:z].should be_nil
   end
+  
+  it "sets names" do
+    @object[:w] = 5
+    eval("w", @object).should == 5
+  end
 end
