@@ -17,6 +17,7 @@ module Bondage
   lister :globals, :global_variables
   lister :instvars, :instance_variables
   lister :classvars, :class_variables
+  lister :consts, :constants
   
   def each(&proc)
     locals.each(&proc)

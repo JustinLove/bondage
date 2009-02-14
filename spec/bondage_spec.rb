@@ -29,6 +29,16 @@ describe "well behaved Bondage", :shared => true do
     b.classvars[:@@blarg].should == :bleep
   end
   
+  it "looks up constants" do
+    b = class Blarg
+      if !defined?(Bleep)
+        Bleep = 5
+      end
+      binding.extend(Bondage)
+    end
+    b.consts[:Bleep].should == 5
+  end
+  
   it "supports each on locals" do
     seen = []
     @object.each {|var, value| seen << var}
