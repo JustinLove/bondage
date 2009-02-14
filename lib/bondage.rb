@@ -11,7 +11,6 @@ module Bondage
   # Hash of instance variables (with '@')
   def instvars; list_all :instance_variables; end
   # Hash of class variables (with '@@')
-  # Only valid in class scope.
   def classvars; list_all :class_variables; end
   # Hash of constants
   def consts; list_all :constants; end
@@ -34,7 +33,8 @@ module Bondage
   alias_method :[], :lookup
 
   # Assign the variable within the binding
-  # * If your implementation supports ObjectSpace, this is relatively safe
+  # * If your implementation supports ObjectSpace, this is relatively safe.
+  #   This preserves object identity.  (Copy by reference.)
   # * If not, the right-hand-side gets it's string value eval'ed
   def []=(name, value)
     if defined?(ObjectSpace)
