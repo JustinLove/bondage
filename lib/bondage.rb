@@ -22,11 +22,13 @@ module Bondage
   lister :classvars, :class_variables
   lister :consts, :constants
   
+  # Iterator over locals; base for Enumerable methods.
   def each(&proc)
     locals.each(&proc)
   end
   include Enumerable
   
+  # Return the value of the symbol in the binding.
   def lookup(name)
     begin
       eval(sanitize(name));
@@ -37,6 +39,9 @@ module Bondage
   
   alias_method :[], :lookup
 
+  # Assign the symbol within the binding
+  # * If your implementation supports ObjectSpace, this is relatively safe
+  # * If not, the right-hand-side gets it's string value eval'ed
   def []=(symbol, value)
     if defined?(ObjectSpace)
       eval("#{sanitize(symbol)} = ObjectSpace._id2ref(#{value.object_id})")
