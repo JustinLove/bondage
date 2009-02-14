@@ -1,26 +1,36 @@
 = bondage
 
-* FIX (url)
+* http://computergeneratedreams.com/
 
 == DESCRIPTION:
 
-FIX (describe your package)
+class Binding stinks.  module Bondage stinks less.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Allows access to binding variables without use of eval.
+* Providers enumerators for visible variables.
+* Warning: Uses eval internally, so don't use it with untrusted strings.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  b = binding.extend(Bondage)
+  b.locals[:b]
+  b.globals.each {|var, value| ... }
+  b[:b]
+  
+  # Or if you're feeling really kinky
+  class Binding
+    include Bondage
+  end
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+Tested under Ruby 1.8.7.
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+sudo gem install
 
 == LICENSE:
 
