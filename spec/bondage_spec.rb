@@ -58,4 +58,10 @@ describe Bondage do
     @object[:w] = 5
     eval("w", @object).should == 5
   end
+  
+  it "sets complex values" do
+    a = [1, 2, 3]
+    @object[:u] = a
+    @object[:u].object_id.should == a.object_id
+  end
 end

@@ -33,6 +33,10 @@ module Bondage
   end
   
   def []=(symbol, value)
-    eval("#{symbol} = #{value}")
+    if defined?(ObjectSpace)
+      eval("#{symbol} = ObjectSpace._id2ref(#{value.object_id})")
+    else
+      eval("#{symbol} = #{value}")
+    end
   end
 end
