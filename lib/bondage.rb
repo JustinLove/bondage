@@ -1,9 +1,9 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-#:include:README.rdoc
+#:include:description.rdoc
 #== SYNOPSIS
-#  :include:synopsis.rb
+#:include:synopsis.rb
 
 module Bondage
   VERSION = '0.0.1'
