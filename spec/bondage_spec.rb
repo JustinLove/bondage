@@ -5,6 +5,10 @@ describe "well behaved Bondage", :shared => true do
     @object.should be_kind_of(Bondage)
   end
   
+  it "shows up in to_s" do
+    @object.to_s.should match(/Bondage/)
+  end
+  
   it "look up locals" do
     @object.locals[:x].should == 1
     @object.locals[:y].should == 2

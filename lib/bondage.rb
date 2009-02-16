@@ -6,7 +6,12 @@ $:.unshift(File.dirname(__FILE__)) unless
 #:include:synopsis.rb
 
 module Bondage
-  VERSION = '0.0.1'
+  VERSION = '0.1.0'
+  
+  def to_s
+    c = self.class.to_s
+    super.sub(c, c + "+Bondage")
+  end
   
   # Hash of local variables
   def locals; list_all :local_variables; end

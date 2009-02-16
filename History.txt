@@ -1,7 +1,7 @@
-== 0.0.2 2009-02-15
+== 0.1.0 2009-02-15
 
-* 1 Minor Enhancement:
-  * Redid readme so the file is constructed from pieces, to avoid some include kinks.
+* Added a to_s method which adds "+Bondage" to the class name.
+* Redid readme so the file is constructed from pieces, to avoid some include kinks.
 
 == 0.0.1 2009-02-14
 
