@@ -1,8 +1,9 @@
 History.txt
-LICENSE.txt
+MIT-LICENSE.txt
 Manifest.txt
 README.rdoc
 Rakefile
+description.rdoc
 lib/bondage.rb
 script/console
 script/destroy
@@ -11,4 +12,5 @@ spec/bondage_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 synopsis.rb
+tasks/readme.rake
 tasks/rspec.rake

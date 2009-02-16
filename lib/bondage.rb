@@ -8,6 +8,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Bondage
   VERSION = '0.1.0'
   
+  # Adds "+Bondage" to default string
   def to_s
     c = self.class.to_s
     super.sub(c, c + "+Bondage")
