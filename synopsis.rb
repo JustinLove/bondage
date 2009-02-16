@@ -9,6 +9,9 @@
   p b.locals # => {:x=>1, :y=>2, :b=>#<Binding:0xxxxxxx>}
   p b.globals[:$PROGRAM_NAME] # => "synopis.rb"
   
+  #concerned about the environement?
+  p b.globals # => {:#!=>nil, :$SAFE=>0, ...}
+  
   # set and retrieve
   b[:z] = ["one", "two", "three"]
   p b[:$LOAD_PATH] # => ["./lib", ...]
