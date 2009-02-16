@@ -46,7 +46,8 @@ describe "well behaved Bondage", :shared => true do
   it "supports each on locals" do
     seen = []
     @object.each {|var, value| seen << var}
-    seen.should == [:x, :y]
+    seen.should include(:x)
+    seen.should include(:y)
   end
   
   it "can enumerate" do

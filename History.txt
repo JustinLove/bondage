@@ -1,6 +1,7 @@
 == 0.1.0 2009-02-15
 
 * Added a to_s method which adds "+Bondage" to the class name.
+* Specs were working from TextMate, but there was an array ordering mismatch from the command line.
 * Redid readme so the file is constructed from pieces, to avoid some include kinks.
 
 == 0.0.1 2009-02-14
