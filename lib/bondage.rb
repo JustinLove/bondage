@@ -6,7 +6,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 #:include:synopsis.rb
 
 module Bondage
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
   
   # Adds "+Bondage" to default string
   def to_s

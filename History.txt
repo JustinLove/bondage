@@ -1,3 +1,7 @@
+== 0.1.1 2009-11-08
+
+* Updated newgem
+
 == 0.1.0 2009-02-15
 
 * Added a to_s method which adds "+Bondage" to the class name.
