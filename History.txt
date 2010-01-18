@@ -1,3 +1,7 @@
+== 0.1.2 2010-01-17
+
+* Readme file now included in rdoc
+
 == 0.1.1 2009-11-08
 
 * Updated newgem
