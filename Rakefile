@@ -14,6 +14,7 @@ $hoe = Hoe.spec 'bondage' do
   self.developer 'Justin Love', 'git@JustinLove.name'
   self.rubyforge_name       = self.name # TODO this is default value
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
+  self.extra_rdoc_files = ['README.rdoc']
 
 end
 
